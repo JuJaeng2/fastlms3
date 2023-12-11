@@ -1,16 +1,13 @@
 package com.zerobase.fastlms.course.dto;
 
-//import com.sun.xml.internal.ws.spi.db.DatabindingException;
 import com.zerobase.fastlms.course.entity.TakeCourse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 @AllArgsConstructor
 @NoArgsConstructor

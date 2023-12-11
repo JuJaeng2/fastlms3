@@ -1,7 +1,6 @@
 package com.zerobase.fastlms.admin.entity;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

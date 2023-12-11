@@ -1,6 +1,5 @@
 package com.zerobase.fastlms.util;
 
-import com.zerobase.fastlms.course.model.ServiceResult;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class PasswordUtils {
