@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#slider').bxSlider({
+                mode: 'horizontal', // 'horizontal' : 좌우 슬라이드, 'fade' : 페이드 효과
+                speed: 500, // 슬라이드 속도
+                pager: true, // 하단에 페이지 표시 여부
+                moveSlides: 1, // 슬라이드 이동시 개수
+                slideWidth: 600, // 슬라이드 너비
+                minSlides: 1, // 최소 노출 개수
+                maxSlides: 1, // 최대 노출 개수
+                slideMargin: 10, // 슬라이드간의 간격
+                auto: true, // 자동 실행 여부
+                autoHover: true, // 마우스 호버시 정지 여부
+                controls: false // 이전 다음 버튼 노출 여부
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>메인 페이지 </h1>
+    <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+    <ul id="slider">
+        <li th:each="imageDir : ${imageDirList}">
+            <img th:src="@{${imageDir}}" alt="image">
+        </li>
+    </ul>
+
+
+
+
+</body>
+</html>

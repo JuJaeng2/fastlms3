@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 화면 </title>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td{
+            border: solid 2px black;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttons input, .buttons a{
+            margin: 10px 10px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            text-decoration: underline;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="/fragments/layout.html :: fragment-admin-body-menu"></div>
+
+    <h1>배너 관리 - 배너 등록</h1>
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <tbody>
+            <tr>
+                <th>배너명</th>
+                <td><input type="text" name="bannerName" placeholder="배너명 입력"></td>
+            </tr>
+            <tr>
+                <th>배너 파일</th>
+                <td><input type="file" name="imageFile" accept="image/*"></td>
+            </tr>
+            <tr>
+                <th>링크 주소</th>
+                <td><input type="text" name="imageLink" placeholder="링크 주소 입력"></td>
+            </tr>
+            <tr>
+                <th>오픈 방법</th>
+                <td>
+                    <select name="newWindow">
+                        <option value="">오픈 방법 선택</option>
+                        <option value="new">새로운 창에서 열기</option>
+                        <option value="current">현재 창에서 열기</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>정렬 순서</th>
+                <td><input type="text" name="order" placeholder="정렬 순서 입력"></td>
+            </tr>
+            <tr>
+                <th>공개 여부</th>
+                <td><input type="checkbox" name="openYn">공개</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <input type="submit" value="배너 등록 하기"/>
+            <a href="list.do">목록 이동</a>
+        </div>
+    </form>
+</body>
+</html>
+

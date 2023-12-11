@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 화면 </title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td{
+            border: 1px solid black;
+        }
+
+        .banner-top{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/fragments/layout.html :: fragment-admin-body-menu"></div>
+<h1>관리자 회원 관리</h1>
+<form method="get" action="list/delete.do">
+    <div class="banner-top">
+        <div>
+            <a href="add.do">배너 등록</a>
+            <button>선택 삭제</button>
+        </div>
+        <div>
+            전체 <span th:text="${bannerInfoList.size()}"></span>개
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" disabled>
+            </th>
+            <th>
+                NO
+            </th>
+            <th>배너명</th>
+            <th>이미지</th>
+            <th>등록일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bannerInfo, index : ${bannerInfoList}">
+            <td><input type="checkbox" name="deleteList" th:value="${bannerInfo.bannerId}"></td>
+            <td th:text="${index.index + 1}"></td>
+            <td><a th:text="${bannerInfo.bannerName}"
+                   th:href="${'detail.do?bannerId=' + bannerInfo.bannerId}"></a></td>
+            <td>
+                <img th:if="${bannerInfo.imageFileName == null}"
+                     th:src="${bannerInfo.imageLink}" alt="link-image">
+
+                <img th:if="${bannerInfo.imageFileName != null}"
+                     th:src="@{${bannerInfo.imageFileName}}" alt="file-image">
+            </td>
+            <td th:text="${bannerInfo.registerDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<!--<div class="pager" th:utext="${pager}">-->
+<!--</div>-->
+
+</body>
+</html>
